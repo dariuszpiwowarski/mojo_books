@@ -2,7 +2,7 @@ IMAGE_NAME := mojo-books
 IMAGE_TAG  := dev
 IMAGE      := $(IMAGE_NAME):$(IMAGE_TAG)
 
-.PHONY: build rebuild run images clean up down logs restart sqitch-deploy sqitch-revert up-build
+.PHONY: build rebuild run images clean up down logs restart sqitch-deploy sqitch-revert up-build db-seed
 
 build:
 	docker build --load -t $(IMAGE) .
@@ -43,3 +43,5 @@ sqitch-deploy:
 sqitch-revert:
 	docker compose exec app sqitch --chdir sqitch revert dev
 
+db-seed:
+	docker compose exec app bash -lc 'psql "$$DATABASE_URL" -f db/seeds/dev.sql'
