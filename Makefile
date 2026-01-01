@@ -2,7 +2,7 @@ IMAGE_NAME := mojo-books
 IMAGE_TAG  := dev
 IMAGE      := $(IMAGE_NAME):$(IMAGE_TAG)
 
-.PHONY: build rebuild run images clean
+.PHONY: build rebuild run images clean up down logs restart
 
 build:
 	docker build --load -t $(IMAGE) .
@@ -21,4 +21,19 @@ images:
 
 clean:
 	docker rmi $(IMAGE) || true
+
+up:
+	docker compose up -d
+
+up-build:
+	docker compose up -d --build
+
+down:
+	docker compose down
+
+logs:
+	docker compose logs -f app
+
+restart:
+	docker compose restart app
 
