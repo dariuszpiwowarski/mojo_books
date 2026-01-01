@@ -1,0 +1,5 @@
+%syntax-version=1.0.0
+%project=mojo_books
+
+init_catalog 2026-01-01T16:24:30Z root <root@648733eb9360> # Initial catalog schema (work/edition/publisher)
+edition_title 2026-01-01T16:44:30Z root <root@648733eb9360> # Add title to edition

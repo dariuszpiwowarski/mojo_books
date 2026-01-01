@@ -2,7 +2,7 @@ IMAGE_NAME := mojo-books
 IMAGE_TAG  := dev
 IMAGE      := $(IMAGE_NAME):$(IMAGE_TAG)
 
-.PHONY: build rebuild run images clean up down logs restart
+.PHONY: build rebuild run images clean up down logs restart sqitch-deploy sqitch-revert up-build
 
 build:
 	docker build --load -t $(IMAGE) .
@@ -36,4 +36,10 @@ logs:
 
 restart:
 	docker compose restart app
+
+sqitch-deploy:
+	docker compose exec app sqitch deploy dev
+
+sqitch-revert:
+	docker compose exec app sqitch revert dev
 
