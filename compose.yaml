@@ -26,7 +26,10 @@ services:
       - .env
     ports:
       - "3000:3000"
-    command: ["perl", "script/mojo_books", "daemon", "--listen", "http://*:3000"]
+    volumes:
+      - ./lib:/app/lib
+    # command: ["perl", "script/mojo_books", "daemon", "--listen", "http://*:3000"]
+    command: ["morbo", "-l", "http://0.0.0.0:3000", "script/mojo_books"]
 
 volumes:
   pgdata:
