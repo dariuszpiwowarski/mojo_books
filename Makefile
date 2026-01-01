@@ -38,8 +38,8 @@ restart:
 	docker compose restart app
 
 sqitch-deploy:
-	docker compose exec app sqitch deploy dev
+	docker compose exec app sqitch --chdir sqitch deploy dev
 
 sqitch-revert:
-	docker compose exec app sqitch revert dev
+	docker compose exec app sqitch --chdir sqitch revert dev
 
